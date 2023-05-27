@@ -12,9 +12,8 @@ public class Cell : MonoBehaviour
     [SerializeField] private Material aliveMat;
     [SerializeField] private Material deadMat;
     [SerializeField] private Material obstacleMat;
-    [SerializeField] private Material debugMat;
 
-    public int livingNeighbors = 0;
+    public int livingNeighbors;
 
     private void Awake()
     {
@@ -50,7 +49,7 @@ public class Cell : MonoBehaviour
         UpdateCellColor();
     }
 
-    public void SetCellLiving()
+    private void SetCellLiving()
     {
         isDead = false;
         isAlive = true;
@@ -58,7 +57,7 @@ public class Cell : MonoBehaviour
         UpdateCellColor();
     }
 
-    public void SetCellObstacle()
+    private void SetCellObstacle()
     {
         isDead = false;
         isAlive = false;
@@ -90,7 +89,6 @@ public class Cell : MonoBehaviour
 
     private int CheckForLivingNeighbors(List<List<Cell>> cellList)
     {
-        myMeshRenderer.material = debugMat;
         var xPosAsInt = (int)transform.position.x;
         var zPosAsInt = (int)transform.position.z;
 
